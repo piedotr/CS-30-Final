@@ -8,8 +8,7 @@ public class PistolFire : MonoBehaviour
     public bool isFiring = false;
     public GameObject muzzleFlash;
     public AudioSource pistolShot;
-	
-	
+   
     public float toTarget;
     void Update()
     {
