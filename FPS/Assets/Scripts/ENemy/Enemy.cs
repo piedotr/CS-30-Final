@@ -35,21 +35,40 @@ public class Enemy : MonoBehaviour
 		private void Patrolling()
 		{
 			if (!walkPointSet) SearchWalkPoint();
+			
+			if (walkPointSet)
+				agent.setDestination(walkPoint);
+			
+			Vector3 distanceToWalkPoint = transform.position - walkPoint;
+			
+			if (distanceToWalkPoint.magnitude <2f)
+				walkPoint = false;
 		}
 		private void SearchWalkPoint()
 		{
 			flaot randomZ=Rnadom.Range(-walkPointRange, walkPointRange);
 			flaot randomX=Rnadom.Range(-walkPointRange, walkPointRange);
 			walkPoint= new Vector3(transform.position.x +randomX, transform.position.y, transform.position.z +randomZ);
-			//if (Physics.Raycasr
+			if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+				walkPointSet = true;
 		}
 		private void ChasePlayer()
 		{
-			
+			agent.SetDestination(player.position);
 		}
 		private void AttackPlayer()
 		{
-			
+			agent.SetDestination(transform.position);
+			transform.LookAt(player);
+			if(!alreadyAttacked)
+			{
+				//attack code here
+				alreadyAttacked=true;
+				invoke(nameof(ResetAttack), timeBetweenAttacks);
+			}
 		}
-  
+	private void ResetAttack()
+	{
+		alreadyAttacked = false;
+	}
 }
