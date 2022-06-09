@@ -69,7 +69,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
+            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded )
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
                 PlayLandingSound();
@@ -92,7 +92,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
-
+        private void getTerrainAnlge()
+        {
+            
+        }
         private void FixedUpdate()
         {
             float speed;
@@ -114,7 +117,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump)
+                if (m_Jump && getTerrainAngle();)
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
