@@ -117,7 +117,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump && getTerrainAngle();)
+                if (m_Jump && getTerrainAngle())
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
