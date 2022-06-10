@@ -92,10 +92,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
-        private void getTerrainAnlge()
-        {
-            
-        }
+    
         private void FixedUpdate()
         {
             float speed;
@@ -117,7 +114,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump && getTerrainAngle())
+                if (m_Jump )
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
