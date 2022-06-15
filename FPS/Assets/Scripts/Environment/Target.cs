@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+	public int CrateCounter;
     public float health = 50f;
 	public void TakeDamage(float amount)
 	{
@@ -14,6 +15,10 @@ public class Target : MonoBehaviour
 	}
 	void Die()
 	{
+        if (CrateCounter <= 5)
+        {
+			CrateCounter++;
+        }
 		Destroy(gameObject);
 	}
 }
